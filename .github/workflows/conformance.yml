@@ -1,0 +1,38 @@
+name: conformance
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  fixtures:
+    name: Tier-1 fixtures (${{ matrix.os }}, rust ${{ matrix.rust }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        rust: [stable, "1.70"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check out matrix256-rs
+        uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.rust }}
+          components: clippy
+
+      - name: Clippy (panic-discipline lints)
+        # The crate-root #![deny(...)] block in src/lib.rs already promotes
+        # the panic-related restriction lints to errors; this step guarantees
+        # CI surfaces any future violation.
+        run: cargo clippy --all-targets -- -D warnings
+
+      - name: Run synthetic fixture suite
+        run: cargo test --release --test conformance
+
+      - name: Run SHA-256 unit tests
+        run: cargo test --release --lib

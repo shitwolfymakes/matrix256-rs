@@ -1,0 +1,30 @@
+[package]
+name = "matrix256"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.70"
+description = "Rust reference implementation of matrix256v1 — a SHA-256 fingerprint over the (path, size) records of a rooted filesystem tree."
+publish = false
+
+[lib]
+name = "matrix256"
+path = "src/lib.rs"
+
+# Two runtime dependencies, both irreducible without violating either
+# Rust standard library availability or basic security hygiene. See README
+# → "Dependencies" for the full justification of each and the trigger
+# conditions for dropping them.
+[dependencies]
+# SHA-256 (spec §2.6). The Rust stdlib has no cryptographic hash functions;
+# `sha2` from RustCrypto is the ecosystem-standard, audited implementation
+# with hardware-acceleration paths. "Don't roll your own crypto" applies
+# even to small textbook algorithms.
+sha2 = "0.10"
+# NFC normalization (spec §2.2). The Rust stdlib has no Unicode
+# normalization; the only realistic alternative is hand-vendoring (and
+# continually re-vendoring) UCD tables in-tree.
+unicode-normalization = "0.1"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
