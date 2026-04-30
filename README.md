@@ -2,8 +2,6 @@
 
 Rust reference implementation of [**matrix256v1**](https://github.com/shitwolfymakes/matrix256) — a SHA-256 fingerprint over the (path, size) records of a rooted filesystem tree.
 
-**Private repository.** Not published to crates.io. The `Cargo.toml` carries `publish = false`; the GitHub remote (when added) must be configured private as well.
-
 ## Dependencies
 
 Two runtime dependencies. Zero dev dependencies. Otherwise pure Rust on the standard library:
@@ -85,3 +83,7 @@ If the spec repo regenerates its fixtures, the inlined expected-digest constants
 - `IMPLEMENTERS.md` — practical guidance (encoding, mount handling, bridge discs)
 - `CORPUS.md` — known-good digests across real discs
 - `CONFORMANCE_FIXTURES.md` / `conformance_fixtures.json` — Tier-1 synthetic fixture suite
+
+## License
+
+Licensed under the Apache License, Version 2.0. See [`LICENSE`](LICENSE) for the full text. Apache 2.0 grants an explicit patent license from contributors to users and includes a patent retaliation clause that terminates those grants for any party that initiates patent litigation alleging the work infringes their patents.

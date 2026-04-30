@@ -1,3 +1,6 @@
+// Copyright 2026 wolfy <wolfy@shitwolfymakes.com>
+// SPDX-License-Identifier: Apache-2.0
+
 //! matrix256v1 — reference Rust implementation of the filesystem-walk
 //! fingerprint. Every regular file under the walk root contributes one
 //! (relative-path, size) record to a SHA-256 hash. The walk and
