@@ -430,7 +430,7 @@ fn fixture_22_deeply_nested() {
 fn fixture_23_long_filename() {
     let tmp = TmpDir::new("m256_fix23_").unwrap();
     let name: String = "a".repeat(200);
-    if let Err(e) = fs::write(tmp.path().join(&name), b"") {
+    if let Err(e) = fs::write(tmp.path().join(name), b"") {
         eprintln!("[ skip ] fixture 23 — filesystem rejected 200-byte component ({e})");
         return;
     }
@@ -450,7 +450,7 @@ fn fixture_24_surrogate_escape_filename_byte() {
     // Build the filename as raw bytes including 0xff (not valid UTF-8).
     let raw_name: &[u8] = b"bad\xff.txt";
     let path = tmp.path().join(OsStr::from_bytes(raw_name));
-    if let Err(e) = fs::write(&path, b"") {
+    if let Err(e) = fs::write(path, b"") {
         eprintln!("[ skip ] fixture 24 — could not create non-UTF-8 filename ({e})");
         return;
     }

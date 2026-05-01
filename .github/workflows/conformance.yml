@@ -28,7 +28,10 @@ jobs:
       - name: Clippy (panic-discipline lints)
         # The crate-root #![deny(...)] block in src/lib.rs already promotes
         # the panic-related restriction lints to errors; this step guarantees
-        # CI surfaces any future violation.
+        # CI surfaces any future violation. Stable-only because clippy lint
+        # rules drift between versions and MSRV is a compile/test contract,
+        # not a style contract.
+        if: matrix.rust == 'stable'
         run: cargo clippy --all-targets -- -D warnings
 
       - name: Run synthetic fixture suite
