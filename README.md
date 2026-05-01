@@ -1,5 +1,12 @@
 # matrix256-rs
 
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Crates.io](https://img.shields.io/crates/v/matrix256.svg)](https://crates.io/crates/matrix256)
+[![Crates.io downloads](https://img.shields.io/crates/d/matrix256.svg)](https://crates.io/crates/matrix256)
+[![docs.rs](https://img.shields.io/docsrs/matrix256)](https://docs.rs/matrix256)
+[![Conformance](https://github.com/shitwolfymakes/matrix256-rs/actions/workflows/conformance.yml/badge.svg)](https://github.com/shitwolfymakes/matrix256-rs/actions/workflows/conformance.yml)
+[![MSRV](https://img.shields.io/badge/rustc-1.70+-orange.svg)](Cargo.toml)
+
 Rust reference implementation of [**matrix256v1**](https://github.com/shitwolfymakes/matrix256) — a SHA-256 fingerprint over the (path, size) records of a rooted filesystem tree.
 
 ## Dependencies
