@@ -23,7 +23,7 @@ path = "src/lib.rs"
 # `sha2` from RustCrypto is the ecosystem-standard, audited implementation
 # with hardware-acceleration paths. "Don't roll your own crypto" applies
 # even to small textbook algorithms.
-sha2 = "0.10"
+sha2 = "0.11"
 # NFC normalization (spec §2.2). The Rust stdlib has no Unicode
 # normalization; the only realistic alternative is hand-vendoring (and
 # continually re-vendoring) UCD tables in-tree.
